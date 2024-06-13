@@ -1,0 +1,146 @@
+//Adigarla Lavanya day 3
+
+package com.hcltechday3;
+
+public class Arraydemo {
+	public static void main(String[] args) {
+		// declare an array
+/*		int ages[]=new int[3];
+		
+		ages[0]=45;
+		ages[1]=33;
+		ages[2]=67;
+		
+		//enhanced for loop or for-each loop
+		for(int element :ages) {
+			System.out.println(element);
+		}
+		//define an array
+		String friends[]= {"Arun kumar","John biden","Sachin tendulkar"};
+		
+		//display only last names
+		for(String name : friends) {
+			String names[]=name.split(" ");
+			//check if the friend is dearest one
+			if(names[1].equals("kumar")) {
+				System.out.print("Dearest friend:");
+			}
+			System.out.println(names[1]);
+		} */
+		
+		//create 2d array
+		int Twodages [][]=new int[2][4];
+		
+		//defining string objects
+		String students[][]= {{"Arun kumar","Rasheed","Amar","Zaved"},{"Lakshmi","Rupa","Tejaswini","Lavanya"}};
+	    display("boys",students);
+		display("girls",students);
+		//displaying all boys names
+	/*	System.out.println("Boys:");
+		for(int i=0;i<1;i++) {
+			for(int j=0;j<4;j++) {
+				System.out.println(students[i][j]);
+			}
+		}
+		
+		System.out.println("Girls:");
+		for(int i=1;i<2;i++) {
+			for(int j=0;j<4;j++) {
+				System.out.println(students[i][j]);
+			}
+		}*/
+	}
+		
+		public static void display(String gender,String students[][]) {
+			int genderCounter=0;
+			if(gender.equals("girls")) {
+				System.out.println("Girls:");
+				genderCounter++;
+			}else {
+				System.out.println("Boys:");
+			}
+				for(int i=genderCounter;i<genderCounter+1;i++) {
+					for(int j=0;j<4;j++) {
+						System.out.println(students[i][j]);
+					}
+				}
+	}
+}
+
+
+
+package com.hcltechday3;
+
+import java.util.Arrays;
+
+public class Pricesorting {
+
+	public static void main(String[] args) {
+		float prices[]= {44.0f,23.20f,55.70f,20.0f,99.50f};
+		System.out.println("after sorting...");
+		//sorting
+		Arrays.sort(prices);
+		showArray(prices);
+	}
+	public static void showArray(float prices[]) {
+		for(float price:prices) {
+			System.out.println(price);
+		}
+	}
+}
+
+
+package com.hcltechday3;
+
+public class Main {
+    public static void main(String[] args) {
+    	
+        int[][][] marks = new int[2][2][3]; // 2 students 2 years 3 subjects
+
+        // Assign marks for Student 1 for both years
+        marks[0][0] = new int[]{95, 80, 92}; // Year 1 marks: Maths, Physics, Chemistry
+        marks[0][1] = new int[]{85, 92, 88}; // Year 2 marks
+
+        // student 2
+        marks[1][0] = new int[]{98, 80, 90}; // Year 1 marks: Maths, Physics, Chemistry
+        marks[1][1] = new int[]{85, 80, 90}; // Year 2 marks
+
+        // Display marks for both students
+        for (int i = 0; i < 2; i++) {
+            System.out.println("Marks for Student " + (i + 1) + ":");
+            for (int year = 0; year < 2; year++) {
+                System.out.println("Year " + (year + 1) + " marks:");
+                System.out.println("Maths:" + marks[i][year][0]);
+                System.out.println("Physics:" + marks[i][year][1]);
+                System.out.println("Chemistry:" + marks[i][year][2]);
+                System.out.println();
+            }
+        }
+    }
+}
+
+
+
+package com.hcltechday3;
+
+import java.util.Arrays;
+
+public class Scores {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int scores[]= {57,23,81,102,200};
+		Arrays.sort(scores);
+		System.out.println("after sorting...");
+		display(scores);
+	}
+	public static void display(int scores[]) {
+		for(int score:scores) {
+			System.out.println(score);
+		}
+	}
+}
+
+
+
+
