@@ -1,0 +1,164 @@
+//Adigarla Lavanya day 6
+
+package com.hcltech.day6;
+
+import java.util.Scanner;
+
+public class Pattern {
+
+    public static void generatePattern(int n) {
+        // Loop through each row
+        for (int i = 0; i < n; i++) {
+            // Loop through each column
+            for (int j = 0; j < n; j++) {
+                if (i == j || i + j == n - 1 || i == n / 2 || j == n / 2) {
+                    System.out.print("* "); // Print '*' for the specified positions
+                } else {
+                    System.out.print("- "); // Print '-' for all other positions
+                }
+            }
+            System.out.println();
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Create a Scanner class for reading input
+        System.out.println("Enter an odd integer:");
+        int n = scanner.nextInt(); // Read the integer input from the user
+        // Check if the input is valid (odd and greater than or equal to 1)
+        if (n % 2 == 0 || n < 1) {
+            System.out.println("Invalid input.enter an odd integer."); // Printing error message for invalid input
+        } else {
+            generatePattern(n);
+        }
+        scanner.close(); // Close the scanner
+    }
+}
+
+
+package com.hcltech.day6;
+
+import java.time.LocalDate;
+import java.util.Scanner;
+
+public class Day{
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try {
+            // Read Date1
+            System.out.println("Enter Date1:");
+            System.out.println("Enter day:");
+            int day1 = sc.nextInt();
+            System.out.println("Enter month:");
+            int month1 = sc.nextInt();
+            System.out.println("Enter year:");
+            int year1 = sc.nextInt();
+            // Read Date2
+            System.out.println("Enter Date2:");
+            System.out.println("Enter day:");
+            int day2 = sc.nextInt();
+            System.out.println("Enter month:");
+            int month2 = sc.nextInt();
+            System.out.println("Enter year:");
+            int year2 = sc.nextInt();
+            // Create LocalDate objects for both dates
+            LocalDate date1 = LocalDate.of(year1, month1, day1);
+            LocalDate date2 = LocalDate.of(year2, month2, day2);
+            // Calculate difference in days
+            long daysBetween = date1.until(date2).getDays() + 1;
+
+            System.out.println(daysBetween+" day");
+        } catch (Exception e) {
+            System.out.println("Invalid Date");
+        } finally {
+            sc.close();
+        }
+    }
+}
+
+
+
+package com.hcltech.day6;
+
+public interface Mobileoperator {
+	public abstract void support4G();
+	public default void support5G() {
+		System.out.println("yet to be supported in the near future!");
+	};
+	public static  void showOperator() {
+		System.out.println("Every operator must follow the rules of TRAI, The operator is:");
+		System.out.println("""
+				1.operator should maintain privacy for the user data
+				2.operator should pay the....
+				""");
+	}
+}
+
+
+package com.hcltech.day6;
+
+public class Airtel implements Mobileoperator {
+	protected String name;
+	public Airtel() {
+		name="Airtel";
+	}
+
+	@Override
+	public void support4G() {
+		System.out.println(name+" support 4G by router");
+		
+	}
+
+	@Override
+	public void support5G() {
+		System.out.println(name+" support 5G by router");
+		
+	}
+
+}
+
+package com.hcltech.day6;
+
+public class Docomo implements Mobileoperator {
+	protected String name;
+	
+	public Docomo() {
+		name="Docomo";
+	}
+
+	@Override
+	public void support4G() {
+		System.out.println(name+" supports 4G by router");
+		
+	}
+	
+	public void support5G() {
+		System.out.println(name+" supports 5G now...");
+	}
+
+	
+	
+
+}
+
+package com.hcltech.day6;
+
+public class Mobiledemo {
+
+	public static void main(String[] args) {
+		Airtel airtel=new Airtel();
+		airtel.support4G();
+		airtel.support5G();
+		
+		Mobileoperator.showOperator();
+		
+		Docomo docomo=new Docomo();
+		docomo.support4G();
+		docomo.support5G();
+
+	}
+
+}
+
+
+
