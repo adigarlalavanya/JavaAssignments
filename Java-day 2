@@ -1,0 +1,275 @@
+//Adigarla Lavanya @day 2
+
+//Customer class
+
+package com.javahcltech.day2;
+
+//model class or bean or pojo class
+public class Customer implements Comparable{
+	//properties
+	private Integer id;
+	private String name;
+	private String phoneNumber;
+	private Boolean prime;
+	
+	public Customer() {
+		super();
+	}
+	
+	public Customer(Integer id, String name, String phoneNumber, Boolean prime) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.prime = prime;
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public Boolean getPrime() {
+		return prime;
+	}
+
+	public void setPrime(Boolean prime) {
+		this.prime = prime;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", phoneNumber=" + phoneNumber + ", prime=" + prime + "]";
+	}
+	
+	
+	@Override
+	public int compareTo(Object o) {
+		//typecast to Customer class object
+		Customer c=(Customer)o;
+		
+			if(this.id.equals(c.getId()) && this.name.equals(c.getName())  && this.phoneNumber.equals(c.getPhoneNumber()) && this.prime.equals(c.getPrime())){
+				return 1;
+			}else {
+				return 0;
+			}
+		}
+	}
+package com.javahcltech.day2;
+
+public class Customerdemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//create two customer objects
+		Customer c1=new Customer();
+		c1.setId(11);
+		c1.setName("nandini");
+		c1.setPhoneNumber("123456789");
+		c1.setPrime(true);
+		
+		Customer c2=new Customer();
+		c2.setId(11);
+		c2.setName("lavanya");
+		c2.setPhoneNumber("123456789");
+		c2.setPrime(true);
+		
+		if(c1.compareTo(c2)==1) {
+			System.out.println("Both customer have same data");
+		}else {
+			System.out.println("Both customer does not have same data");
+		}
+	}
+}
+
+
+//Simple interest
+
+package com.javahcltech.day2;
+import java.text.DecimalFormat;
+
+public class simpleInterest {
+	private double principleAmount;
+	private double rate;
+	private int time;
+	
+	public simpleInterest(double principleAmount, double rate, int time) {
+		super();
+		this.principleAmount = principleAmount;
+		this.rate = rate;
+		this.time = time;
+	}
+	
+	public double getPrincipleAmount() {
+		return principleAmount;
+	}
+
+	public void setPrincipleAmount(double principleAmount) {
+		this.principleAmount = principleAmount;
+	}
+
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+	
+	public double calculateSimpleInterest() {
+		return(principleAmount * time * rate)/100;
+	}
+	
+	public void display() {
+		DecimalFormat df=new DecimalFormat("##.00");
+		System.out.println("simpleInterest: " +df.format(calculateSimpleInterest()));
+	}
+	
+
+	public static void main(String[] args) {
+		simpleInterest cal=new simpleInterest(5000,2.5,1);
+		cal.display();
+	}
+}
+
+
+
+//Student marks
+
+package com.javahcltech.day2;
+
+class Student {
+    private int maths;
+    private int physics;
+    private int chemistry;
+    
+    public Student() {
+		super();
+	}
+
+	public Student(int maths, int physics, int chemistry) {
+		super();
+		this.maths = maths;
+		this.physics = physics;
+		this.chemistry = chemistry;
+	}
+
+	public int getMaths() {
+        return maths;
+    }
+
+    public void setMaths(int maths) {
+        this.maths = maths;
+    }
+
+    public int getPhysics() {
+        return physics;
+    }
+
+    public void setPhysics(int physics) {
+        this.physics = physics;
+    }
+
+    public int getChemistry() {
+        return chemistry;
+    }
+
+    public void setChemistry(int chemistry) {
+        this.chemistry = chemistry;
+    }
+    
+    public String getMaxMarksSubject() {
+        int maxMarks = maths;
+        String subject = "Maths";
+
+        if (physics > maxMarks) {
+            maxMarks = physics;
+            subject = "Physics";
+        }
+
+        if (chemistry > maxMarks) {
+            maxMarks = chemistry;
+            subject = "Chemistry";
+        }
+
+        return subject;
+    }
+
+    // Method to get the highest marks
+    public int getMaxMarks() {
+        int maxMarks = maths;
+
+        if (physics > maxMarks) {
+            maxMarks = physics;
+        }
+
+        if (chemistry > maxMarks) {
+            maxMarks = chemistry;
+        }
+        return maxMarks;
+    }
+ // Method to display the maximum marks and the subject name
+    public void displayMaxMarks() {
+        String subject = getMaxMarksSubject();
+        int maxMarks = getMaxMarks();
+        System.out.println("Maximum marks: " + maxMarks + " in " + subject);
+    }
+}
+
+package com.javahcltech.day2;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Enter marks for Maths:");
+        int maths = Integer.parseInt(br.readLine());
+
+        System.out.println("Enter marks for Physics:");
+        int physics = Integer.parseInt(br.readLine());
+
+        System.out.println("Enter marks for Chemistry:");
+        int chemistry = Integer.parseInt(br.readLine());
+
+        Student student = new Student(maths, physics, chemistry);
+
+        // Display the maximum marks
+        student.displayMaxMarks();
+    }
+}
+
+	
+	
+
