@@ -1,0 +1,383 @@
+//Adigarla Lavanya day 4
+
+package com.hcltechday4;
+
+public class Car {
+	//properties
+	public int seats;
+	public static int wheels;//stored outside of object i.e any car wheels are common 
+	public String carName;
+	public String carModel;
+	
+	//constructor-is a method with the same name of the class called by new
+	public Car() {
+		wheels=4;
+	}
+
+	public Car(int seats, String carName, String carModel) {
+		super();
+		this.seats = seats;
+		this.carName = carName;
+		this.carModel = carModel;
+	}
+
+
+	public int getSeats() {
+		return seats;
+	}
+
+	public void setSeats(int seats) {
+		this.seats = seats;
+	}
+
+	public static int getWheels() {
+		return wheels;
+	}
+
+	public static void setWheels(int wheels) {
+		Car.wheels = wheels;
+	}
+
+	public String getCarName() {
+		return carName;
+	}
+
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
+
+	public String getCarModel() {
+		return carModel;
+	}
+
+	public void setCarModel(String carModel) {
+		this.carModel = carModel;
+	}
+
+	@Override
+	public String toString() {
+		return "Car [seats=" + seats + ", carName=" + carName + ", carModel=" + carModel + ",wheels=" + wheels + "]";
+	}
+	
+	
+	
+	
+}
+
+package com.hcltechday4;
+
+public class Cardemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Car myCar=new Car();
+		
+		//set values to the properties of object
+		myCar.setCarName("Santro");
+		myCar.setCarModel("Xing");
+		myCar.setSeats(5);
+		System.out.println("my car details "+myCar);
+		
+		
+	    Car yourCar=new Car();
+		//set values to the properties of object
+		yourCar.setCarName("skoda");
+		yourCar.setCarModel("Activa");
+		yourCar.setSeats(7);
+		
+		System.out.println("your car details: "+yourCar);
+		
+		//create an array of car objects
+		Car[] cars=new Car[3];
+		
+		cars[0]=myCar;
+		cars[1]=yourCar;
+		cars[2]=new Car(5,"Hundai","verna");
+		
+		//display cars array
+		for(Car c:cars) {
+			System.out.println(c);
+		}
+		
+		//create racecar object
+		Racecar rc=new Racecar();
+		//set properties for racecar
+		rc.setBrandName("Ferrari");
+		rc.setCarName("Formula one");
+		rc.setCarModel("zoom");
+		rc.setSeats(2);
+		System.out.println(rc);
+	}
+}
+
+
+
+package com.hcltechday4;
+
+class Ape{
+	int tail=1;
+	public Ape() {
+		System.out.println("ape created");
+	}
+}
+class Human extends Ape{
+	public Human() {
+		System.out.println("Human created");
+	}
+}
+class Student extends Human{
+	public Student() {
+		System.out.println("Student created");
+	}
+}
+
+public class Multileveldemo {
+
+	public static void main(String[] args) {
+	     Student s=new Student();
+	//	 Human h=new Human();
+	}
+
+}
+
+
+package com.hcltechday4;
+
+
+public class Complilepolydemo {
+
+	public static void main(String[] args) {
+		Calculator cal=new Calculator();
+		int sum1=cal.add(5, 2);
+		System.out.println("Integer sum: "+sum1);
+		float sum2=cal.add(5.1f, 3.4f);
+		System.out.println("real number sum: "+sum2);
+	}
+}
+
+
+package com.hcltechday4;
+
+public class Runtimepolydemo {
+
+	public static void main(String[] args) {
+		
+		float firstNumber,secondNumber,res;
+		Calculator calc=new Calculator();
+			
+			try {
+				firstNumber=Integer.parseInt(args[0]);
+				secondNumber=Integer.parseInt(args[1]);
+			}catch(Exception e) {
+				firstNumber=Float.parseFloat(args[0]);
+				secondNumber=Float.parseFloat(args[1]);
+			}
+			//call add method from calculator class object
+			res=calc.add(firstNumber,secondNumber);
+			System.out.println(res);
+		}
+	}
+
+
+
+package com.hcltechday4;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+ 
+class Product{
+	
+	private int id;
+	private String name;
+	private float price;
+	private float quantityOnHand;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	public float getQuantityOnHand() {
+		return quantityOnHand;
+	}
+	public void setQuantityOnHand(float quantityOnHand) {
+		this.quantityOnHand = quantityOnHand;
+	}
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", quantityOnHand=" + quantityOnHand + "]";
+	}
+	
+}
+
+package com.hcltechday4;
+
+import java.util.Comparator;
+
+public class Idcomparator implements Comparator {
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		Product p1=(Product)o1;
+		Product p2=(Product)o2;
+		if(p1.getId()>p2.getId()) {
+			return 1;
+		}
+		else if(p1.getId()<p2.getId()) {
+			return -1;
+		}
+		return 0;
+	}
+
+}
+
+package com.hcltechday4;
+
+import java.util.Comparator;
+
+public class Namecomparator implements Comparator {
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		Product p1=(Product)o1;
+		Product p2=(Product)o2;
+		return p1.getName().compareTo(p2.getName());
+	}
+
+}
+
+
+package com.hcltechday4;
+
+import java.util.Comparator;
+
+public class Pricecomparator implements Comparator {
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		Product p1=(Product)o1;
+		Product p2=(Product)o2;
+		return p1.getName().compareTo(p2.getName());
+	}
+}
+
+
+package com.hcltechday4;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class Sortingdemo {
+
+	public static void main(String[] args) throws IOException {
+		// create an array to hold three Product objects
+		Product products[] = new Product[3];
+		// create input stream reader
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		// accept product details into array
+		for (int counter = 0; counter < products.length; counter++) {
+			// create product object inside array
+			products[counter] = new Product();
+			// prompt the user for product details
+			System.out.println("Enter product id:");
+			// set the property id
+			products[counter].setId(Integer.parseInt(br.readLine()));
+
+			// prompt for name
+			System.out.println("Enter product name:");
+			// store name in the property
+			products[counter].setName(br.readLine());
+			// prompt for price
+			System.out.println("Enter price in Rs.:");
+			// read data into the property
+			products[counter].setPrice(Float.parseFloat(br.readLine()));
+
+			// prompt for qoh
+			System.out.println("Enter quantity on hand:");
+			// get data into property
+			products[counter].setQuantityOnHand(Float.parseFloat(br.readLine()));
+
+		}
+
+		char reply = 'y';
+		int choice = 0;
+
+		do {
+			// display a menu
+			System.out.println("Menu\n1.Sort by Id\n2.Sort by name\n3.Sort by price\4.Exit");
+			System.out.println("Enter your choice(1-4)");
+			choice = Integer.parseInt(br.readLine());
+			// create a collection plist from products array
+			List<Product> plist = Arrays.asList(products);
+			switch (choice) {
+			case 1:
+
+				// sort the collection by desired property
+				Collections.sort(plist, new Idcomparator());
+
+				for (Product p : plist) {
+					System.out.println(p);
+				}
+				;
+				break;
+			case 2:// create a collection plist from products array
+				// List<Product> plist=Arrays.asList(products);
+
+				// sort the collection by desired property
+				Collections.sort(plist, new Namecomparator());
+
+				for (Product p : plist) {
+					System.out.println(p);
+				}
+				;
+				break;
+			case 3:
+				Collections.sort(plist, new Pricecomparator());
+
+				for (Product p : plist) {
+
+					System.out.println(p);
+				}
+				;
+				break;
+
+			// System.out.println("yet to be done");break;
+			case 4:
+				Collections.sort(plist, new Quantitycomparator());
+
+				for (Product p : plist) {
+					System.out.println(p);
+
+				}
+				;
+				break;
+			default:
+				System.out.println("Invalid choice!!!");
+			}
+
+		}while (reply == 'y' || reply == 'Y');
+	}
+}
+
