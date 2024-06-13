@@ -1,0 +1,354 @@
+//Adigarla Lavanya day 5
+
+package com.hcltech.day5;
+
+public class Addanynumbers {
+
+	public static void main(String... args) {
+		// add any number of arguments
+		int result1=add(5,22);
+		int result2=add(1,22,3,4);
+		float res=add(4.5f,5.0f);
+		
+		System.out.println(result1);
+		System.out.println(result2);
+		System.out.println(res);
+		
+	}
+	//vararags
+	
+	public static int add(int... numbers) {
+		int sum=0;
+		for(int n:numbers) {
+			sum+=n;
+		}
+		return sum;
+	}
+	public static float add(float... numbers) {
+		float sum=0.0f;
+		for(float n:numbers) {
+			sum+=n;
+		}
+		return sum;
+	}
+}
+
+
+package com.hcltech.day5;
+
+public class Bird {
+	private static int Legs;
+	private static int wings;
+	private String birdName;
+	private String birdColor;
+	private boolean singing;
+	
+	public static int getLegs() {
+		return Legs;
+	}
+	public static void setLegs(int legs) {
+		Legs = legs;
+	}
+	public static int getWings() {
+		return wings;
+	}
+	public static void setWings(int wings) {
+		Bird.wings = wings;
+	}
+	public String getBirdName() {
+		return birdName;
+	}
+	public void setBirdName(String birdName) {
+		this.birdName = birdName;
+	}
+	public String getBirdColor() {
+		return birdColor;
+	}
+	public void setBirdColor(String birdColor) {
+		this.birdColor = birdColor;
+	}
+	public boolean isSinging() {
+		return singing;
+	}
+	public void setSinging(boolean singing) {
+		this.singing = singing;
+	}
+	
+	//can walk
+	public void walk() {
+		System.out.println(" walking with "+Legs+" legs.");
+	}
+	//can fly
+	public void fly() {
+		System.out.println(" flying with"+wings+ " wings. ");
+	}
+	
+	
+}
+
+
+package com.hcltech.day5;
+
+public class Flight extends Bird {
+	int flightNumber;
+	String airLines;
+	
+	@Override
+	public void fly() {
+		System.out.println("take off...");
+	}
+	
+	
+}
+
+package com.hcltech.day5;
+
+public class Flightdemo {
+
+	public static void main(String[] args) {
+		Flight f=new Flight();
+	    f.flightNumber=982;
+	    f.airLines="Air India";
+		f.fly();
+	}
+
+}
+
+
+
+package com.hcltech.day5;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Bulb {
+    // Method to calculate the GCD of two numbers
+    public static int calculateGCD(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+    // Method to calculate the LCM of two numbers
+    public static int calculateLCM(int a, int b) {
+        return (a * b) / calculateGCD(a, b);
+    }
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        // Input number of bulbs
+        System.out.println("Enter number of bulbs:");
+        int n = Integer.parseInt(reader.readLine());
+
+        int[] flickerSeconds = new int[n];
+
+        // Input flicker seconds for each bulb
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter the flicker second of bulb " + (i + 1) + ":");
+            flickerSeconds[i] = Integer.parseInt(reader.readLine());
+        }
+        // Find the LCM of all flicker seconds
+        int lcm = flickerSeconds[0];
+        for (int i = 1; i < n; i++) {
+            lcm = calculateLCM(lcm, flickerSeconds[i]);
+        }
+        // result
+        System.out.println("From now, all bulbs will flicker after " + lcm + " second" + (lcm == 1 ? "" : "s"));
+        reader.close();
+    }
+}
+
+
+
+package com.hcltech.day5;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Friend {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] friends = new String[5];
+        System.out.println("Enter five friends:");
+        
+        // Reading all 5 names
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Friend " + (i + 1) + ":");
+            friends[i] = sc.next();
+        }
+        
+        // Sorting the array of names alphabetically
+        Arrays.sort(friends);
+        
+        // Displaying the sorted names separated by commas
+        System.out.print("Friends names in sorting order: ");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(friends[i]);
+            if (i < 4) {
+                System.out.print(", ");
+            }
+        }
+        sc.close();
+    }
+}
+
+package com.hcltech.day5;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringJoiner;
+
+public class Friendsnamesdemo {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("enter 5 friends:");
+		String names=br.readLine();
+		String[] namesArray=names.split(",");
+		Arrays.sort(namesArray);
+		
+		StringJoiner joinNames = new StringJoiner(",");
+		for(String friends:namesArray) {
+			joinNames.add(friends);
+		}
+		System.out.println(joinNames);
+	}
+
+}
+
+
+
+package com.hcltech.day5;
+
+//creating final class-means no subclasses defined
+final class Kohinoor{
+	private int edges;
+	private int cuttingAngle;
+	
+	Kohinoor() {
+		edges=6;
+		cuttingAngle=52;
+		
+	}
+	public int getEdges() {
+		return edges;
+	}
+	
+	public int getCuttingAngle() {
+		return cuttingAngle;
+	}
+	
+}
+
+public class Immutabledemo {
+
+	public static void main(String[] args) {
+		Kohinoor diamond =new Kohinoor();
+		int edges=diamond.getEdges();
+		System.out.println(edges);
+		
+	}
+
+}
+
+
+
+package com.hcltech.day5;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Rank {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int[] ranks = new int[5];
+		System.out.println("Enter five ranks:");
+		for (int i = 0; i < 5; i++) {
+			System.out.print("Rank " + (i + 1) + ":");
+			ranks[i] = sc.nextInt();
+		}
+		Arrays.sort(ranks);
+
+		System.out.print("Enter a rank to check:");
+		int check = sc.nextInt();
+		int index = Arrays.binarySearch(ranks, check);
+
+		// result
+		if (index >= 0) {
+			System.out.println("rank " + check + " exists.");
+		} else {
+			System.out.println("rank " + check + " does not exist.");
+		}
+		sc.close();
+	}
+}
+
+
+
+package com.hcltech.day5;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Roman {
+    public static int romanToInt(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+
+        int result = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (i > 0 && map.get(s.charAt(i)) > map.get(s.charAt(i - 1))) {
+                result += map.get(s.charAt(i)) - 2 * map.get(s.charAt(i - 1));
+            } else {
+                result += map.get(s.charAt(i));
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter a Roman numeral: ");
+        String input = reader.readLine();
+        System.out.println("Integer form of Roman numeral is: " + romanToInt(input));
+    }
+}
+
+
+
+package com.hcltech.day5;
+
+public class Stringdemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String greeting ="Hello";
+		System.out.println(greeting+ " has hashCode:"+greeting.hashCode());
+		
+		String greeting1="Hello";
+		
+		System.out.println("after changing the data inside String object,it's hashcode:"+greeting.hashCode());
+		
+		if(greeting.equals(greeting1)) {
+			System.out.println("Both are same");
+		}else {
+			System.out.println("Both are not same");
+		}
+		//equals checking hashcode
+		//.equals checks content
+	}
+}
+
+
+
+
